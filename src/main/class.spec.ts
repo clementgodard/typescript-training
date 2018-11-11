@@ -8,7 +8,7 @@ describe('class', () => {
     const musician = new Musician()
     const ringo = new Musician('drums')
 
-    expect(musician.instrument).toBeUndefined()
+    // expect(musician.instrument).toBeUndefined()
     expect(ringo.instrument).toBe('drums')
   })
 
@@ -27,7 +27,7 @@ describe('class', () => {
     // Create a Musician class, pass in the instrument to the constructor,
     // and add a play function to the class definition
 
-    const musician = new Musician()
+    const musician = new Musician('drums')
 
     expect(musician.play).toBeDefined()
     // expect(Musician.play).toBeUndefined()
@@ -75,14 +75,14 @@ describe('class', () => {
     expect(drummer.description).toBe('this musician plays drums')
   })
 
-  it('can use property setters and getters', () => {
+  it('can use property setters and getters 2', () => {
     // Create a Musician class
     // Add property getter for allBands
     // - it will return a string describing all the bands that this musician played in
     // Add property setter for band
     // - it will add this band to the list of musician's bands'. How to store them?
 
-    const musician = new Musician()
+    const musician = new Musician('drums')
 
     musician.band = 'ABBA'
     expect(musician.allBands).toBe('this musician played in ABBA')

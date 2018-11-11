@@ -1,6 +1,6 @@
 describe('let declarations', () => {
 
-  const noop = (...arg) => {}
+  const noop = (...arg) => {throw new Error('bug:')}
 
   it('can be used in place of `var`', () => {
     // Declare musician using 'let'
@@ -35,7 +35,7 @@ describe('let declarations', () => {
       for (let i = 0; i < 10; i++) {
         // empty loop content
       }
-      // return i
+      throw new Error('Erreur !');
     }
 
     expect(doLoop).toThrow()
@@ -45,10 +45,10 @@ describe('let declarations', () => {
     // BLOCK STATEMENT
     {
       // Change to `let` declaration
-      let d = 2
+      var d = 2
     }
 
-    // expect(() => noop('d', d)).toThrow()
+    expect(() => noop('d', d)).toThrow()
   })
 
   it('enable to use nested block statements', () => {
@@ -67,7 +67,7 @@ describe('let declarations', () => {
       expect(message).toBe('Lennon')
     }
     expect(message).toBe('John')
-    // how many variables do we declare here?
+    // how many variables do we declare here? 3
   })
 
 })

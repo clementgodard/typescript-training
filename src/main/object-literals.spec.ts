@@ -5,18 +5,19 @@ describe('enhanced object literals', () => {
     function createBeatle(name, dead) {
       // Using NEW Object Literal Syntax, return a literal that will allow the tests to pass
       return {
+        // type: 'Musician',
+        // name: name,
+        // dead: dead,
+        // wantsToPlayWith : function(target: any): string {
+        //   return '' + this.name + ' wants to play with ' + target.name + (target.dead ? ' but he is ' : ' and he is not') + ' dead';
+        // }
+        // - in ES5 you'd do:
         type: 'Musician',
         name: name,
         dead: dead,
-        wantsToPlayWith: (target: Musician) => {
-          return this.name + ' wants to play with ' + target.name + (target.dead ? 'but he is ' : 'and he is not') + 'dead';
-        }
-        // - in ES5 you'd do:
-        // name: name,
-        // dead: dead,
-        // wantsToPlayWith: function (target){
-        //   return `${this.name} wants to play with ${target.name} ${target.dead ? 'but he is' : 'and he is not'} dead`;
-        // }
+        wantsToPlayWith: function (target: any): string{
+          return `${this.name} wants to play with ${target.name} ${target.dead ? 'but he is' : 'and he is not'} dead`;
+        }  
         // - do that in ES6 !
       }
     }

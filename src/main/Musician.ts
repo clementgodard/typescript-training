@@ -1,22 +1,23 @@
 class Musician
 {
-    public static instances: Musician[];
+    public static instances: Musician[] = [];
 
-    public instrument: String;
-    public name: String;
+    public instrument;
+    public name: string;
     public dead: boolean;
-    public description: String;
-    public band: String;
-    public allBands: String;
+    public description: string;
+    private _band: string[] = new Array();
+    private _allBands: string;
 
-    constructor(instrument: String = 'guitar')
+    constructor(instrument: string = 'guitar')
     {
         this.instrument = instrument;
         this.description = 'this musician plays ' + this.instrument;
-        this.allBands = 'this musician played in ';
+        this._band = [];
+        this._allBands = '';
     }
 
-    public play(): String
+    public play(): string
     {
         return 'I\'m playing ' + this.instrument;   
     }
@@ -28,17 +29,30 @@ class Musician
         return res;
     }
 
-    public setBand(nom: String)
+    public set band(nom: string)
     {
-        this.band = nom;
-        this.allBands += this.band + ', ';
+        this._band.push(nom);
+        this._allBands = 'this musician played in ';
+
+        for(let i=0 ; i < this._band.length ; i++) {
+            if (i == 0) {
+                this._allBands += '' + this._band[i];
+            } else {
+                this._allBands += ', ' + this._band[i];
+            }
+        }
+    }
+
+    public get allBands()
+    {
+        return this._allBands;
     }
 
 }
 
 class Rockman extends Musician
 {
-    public play(): String
+    public play(): string
     {
         return 'I\'m playing guitar';
     }
